@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تم تسجيل الدخول | MACHHAD</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #f0f0f0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .container {
+    max-width: 560px;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    padding: 48px 32px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  p {
+    color: #d8d8d8;
+    line-height: 1.7;
+    font-size: 1em;
+  }
+  .status {
+    margin-top: 24px;
+    padding: 14px 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    font-size: 0.9em;
+    color: #b8b8b8;
+    word-break: break-all;
+  }
+  a.back {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 22px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    color: #f0f0f0;
+    text-decoration: none;
+  }
+  a.back:hover { background: rgba(255,255,255,0.15); }
+  footer {
+    margin-top: 32px;
+    font-size: 0.85em;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>تم تسجيل الدخول بنجاح ✅</h1>
+    <p>شكرًا لموافقتك على ربط حسابك في TikTok مع تطبيق MACHHAD. يمكنك الآن إغلاق هذه الصفحة والعودة إلى التطبيق.</p>
+    <div class="status" id="status">جاري التحقق...</div>
+    <a class="back" href="index.html">العودة للرئيسية</a>
+    <footer>© 2026 MACHHAD. جميع الحقوق محفوظة.</footer>
+  </div>
+
+  <script>
+    // تعرض قيمة "code" المرسلة من TikTok بعد الموافقة (للاختبار فقط حاليًا)
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+    const statusEl = document.getElementById('status');
+    if (code) {
+      statusEl.textContent = 'تم استلام رمز التفويض (code) بنجاح.';
+    } else {
+      statusEl.textContent = 'لم يتم استلام أي رمز — تحقق من الرابط.';
+    }
+  </script>
+</body>
+</html>
