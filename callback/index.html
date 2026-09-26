@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MACHHAD - TikTok Connected</title>
+  <style>
+    body { margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+           font-family: Arial, sans-serif; background:#0f0f14; color:#fff; }
+    .card { background:#1c1c26; padding:40px; border-radius:16px; text-align:center; max-width:420px; width:90%; }
+    .icon { font-size:56px; }
+    h1 { font-size:24px; margin:16px 0 8px; }
+    p { color:#b8b8c8; line-height:1.5; }
+    .ok { color:#25f4ee; } .err { color:#fe2c55; }
+    a { display:inline-block; margin-top:20px; padding:12px 24px; background:#fe2c55;
+        color:#fff; border-radius:8px; text-decoration:none; font-weight:bold; }
+  </style>
+</head>
+<body>
+  <div class="card" id="card"></div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const card = document.getElementById('card');
+    if (params.get('code')) {
+      card.innerHTML = '<div class="icon">✅</div>' +
+        '<h1 class="ok">TikTok account connected</h1>' +
+        '<p>MACHHAD is now authorized to publish your AI-generated videos to your TikTok profile.</p>' +
+        '<p>Permissions granted: <br>' + (params.get('scopes') || 'user.info.basic, video.publish, video.upload') + '</p>' +
+        '<a href="/">Back to MACHHAD</a>';
+    } else {
+      card.innerHTML = '<div class="icon">⚠️</div>' +
+        '<h1 class="err">Connection cancelled</h1>' +
+        '<p>' + (params.get('error_description') || 'The TikTok authorization was not completed.') + '</p>' +
+        '<a href="/">Back to MACHHAD</a>';
+    }
+  </script>
+</body>
+</html>
