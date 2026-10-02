@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post a video – MACHHAD</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{--sky:#E8ECF8;--ink:#1E2448;--ink-soft:#4A5078;--sun:#F2A93B;--rose:#E86A6A;--paper:#fff;--line:#CDD3EA;--ok:#2E8B57}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Source Sans 3",system-ui,sans-serif;background:var(--sky);color:var(--ink);font-size:17px;line-height:1.55}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  header{padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+  .brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:24px;text-decoration:none;color:var(--ink)}
+  .who{display:flex;align-items:center;gap:10px;font-weight:600}
+  .who img{width:36px;height:36px;border-radius:50%;background:var(--line);object-fit:cover}
+  .who small{display:block;font-weight:400;color:var(--ink-soft);font-size:14px;line-height:1.2}
+  h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:16px 0 28px}
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:40px;align-items:start;padding-bottom:64px}
+  video{width:100%;aspect-ratio:9/16;background:var(--ink);border-radius:22px;border:6px solid var(--ink);display:block}
+  .tag{display:inline-block;margin-top:12px;background:var(--paper);border:1px solid var(--line);padding:3px 12px;border-radius:999px;font-size:14px}
+  form{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;gap:24px}
+  label.t,legend{font-weight:600;display:block;margin-bottom:8px}
+  textarea,select{width:100%;font:inherit;color:inherit;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+  textarea{min-height:110px;resize:vertical}
+  .count{text-align:right;font-size:14px;color:var(--ink-soft)}
+  fieldset{border:0}
+  .check{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+  .check input{width:20px;height:20px;margin-top:3px;accent-color:var(--ink)}
+  .check.off{color:#9AA0BF}
+  .hint{font-size:14px;color:var(--ink-soft);margin-top:4px}
+  .sub{margin-left:30px;border-left:3px solid var(--line);padding-left:14px}
+  .note{background:var(--sky);border-radius:12px;padding:14px;font-size:15px;color:var(--ink-soft)}
+  .note a{color:var(--ink)}
+  button{font:inherit;font-weight:600;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:15px;cursor:pointer;width:100%}
+  button:disabled{background:#A9AECB;cursor:not-allowed}
+  :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+  .msg{border-radius:12px;padding:14px;font-weight:600}
+  .msg.info{background:#FFF4DF}
+  .msg.good{background:#E3F4EA;color:var(--ok)}
+  .msg.bad{background:#FCE6E6;color:#B33A3A}
+  .gate{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:36px;text-align:center;max-width:520px;margin:40px auto}
+  .gate a{display:inline-block;margin-top:18px;background:var(--ink);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:999px}
+  @media (max-width:800px){.grid{grid-template-columns:1fr}.grid>div:first-child{max-width:300px;margin:0 auto;width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">MACHHAD</a>
+    <div class="who" id="who" hidden>
+      <img id="avatar" alt="">
+      <div><span id="nick"></span><small id="user"></small></div>
+    </div>
+  </header>
+
+  <div id="gate" class="gate" hidden>
+    <h1>Connect your TikTok account</h1>
+    <p id="gateText">Sign in with TikTok to review and post your videos.</p>
+    <a href="/">Go to sign in</a>
+  </div>
+
+  <main id="app" hidden>
+    <h1>Review your video before posting</h1>
+    <div class="grid">
+      <div>
+        <video id="video" controls playsinline preload="metadata"></video>
+        <span class="tag">AI-generated video</span>
+      </div>
+
+      <form id="form" novalidate>
+        <div>
+          <label class="t" for="caption">Caption</label>
+          <textarea id="caption" maxlength="2200"></textarea>
+          <div class="count"><span id="count">0</span> / 2200</div>
+        </div>
+
+        <div>
+          <label class="t" for="privacy">Who can view this video</label>
+          <select id="privacy" required>
+            <option value="" selected disabled>Select who can view</option>
+          </select>
+          <p class="hint" id="privacyHint"></p>
+        </div>
+
+        <fieldset>
+          <legend>Allow users to</legend>
+          <label class="check" id="cWrap"><input type="checkbox" id="comment"> Comment</label>
+          <label class="check" id="dWrap"><input type="checkbox" id="duet"> Duet</label>
+          <label class="check" id="sWrap"><input type="checkbox" id="stitch"> Stitch</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Commercial content</legend>
+          <label class="check"><input type="checkbox" id="commercial"> This video promotes a brand, product or service</label>
+          <div class="sub" id="commercialOpts" hidden>
+            <label class="check"><input type="checkbox" id="yourBrand"> Your brand<br><span class="hint">You are promoting yourself or your own business.</span></label>
+            <label class="check"><input type="checkbox" id="branded"> Branded content<br><span class="hint">You are promoting another brand or a third party.</span></label>
+            <p class="hint" id="commercialHint"></p>
+          </div>
+        </fieldset>
+
+        <p class="note" id="consent">By posting, you agree to TikTok's <a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank" rel="noopener">Music Usage Confirmation</a>.</p>
+
+        <p class="note">This video will be labeled as AI-generated on TikTok. After you post, it can take a few minutes to appear on your profile.</p>
+
+        <div id="msg" class="msg" hidden></div>
+        <button type="submit" id="postBtn" disabled>Post to TikTok</button>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script>
+  // ===== The video to review. Put the file in the "videos" folder of the site. =====
+  const VIDEO = {
+    path: "/videos/demo.mp4",
+    caption: "Start before you feel ready. ✨ #motivation #mindset"
+  };
+
+  const LABELS = {
+    PUBLIC_TO_EVERYONE: "Everyone",
+    MUTUAL_FOLLOW_FRIENDS: "Friends",
+    FOLLOWER_OF_CREATOR: "Followers",
+    SELF_ONLY: "Only me"
+  };
+
+  const $ = id => document.getElementById(id);
+  let creator = null;
+  let videoSeconds = 0;
+
+  $("video").src = VIDEO.path;
+  $("caption").value = VIDEO.caption;
+  $("count").textContent = VIDEO.caption.length;
+  $("caption").addEventListener("input", e => { $("count").textContent = e.target.value.length; });
+
+  $("video").addEventListener("loadedmetadata", () => {
+    videoSeconds = $("video").duration;
+    validate();
+  });
+
+  function showMsg(type, text) {
+    const m = $("msg");
+    m.className = "msg " + type;
+    m.textContent = text;
+    m.hidden = false;
+  }
+
+  function lockCheck(box, wrap, disabled) {
+    box.disabled = disabled;
+    box.checked = false;
+    wrap.classList.toggle("off", disabled);
+    if (disabled) wrap.title = "Turned off in your TikTok settings";
+  }
+
+  // Load creator info from TikTok
+  fetch("/api/creator")
+    .then(r => r.json().then(d => ({ status: r.status, d })))
+    .then(({ status, d }) => {
+      if (status === 401) { $("gate").hidden = false; return; }
+      if (status !== 200) {
+        $("gate").hidden = false;
+        $("gateText").textContent = "Could not load your TikTok account: " + (d.error || "unknown error");
+        return;
+      }
+      creator = d;
+      $("app").hidden = false;
+      $("who").hidden = false;
+      $("avatar").src = d.creator_avatar_url || "";
+      $("nick").textContent = d.creator_nickname || "";
+      $("user").textContent = d.creator_username ? "@" + d.creator_username : "";
+
+      (d.privacy_level_options || []).forEach(v => {
+        const o = document.createElement("option");
+        o.value = v;
+        o.textContent = LABELS[v] || v;
+        $("privacy").appendChild(o);
+      });
+
+      lockCheck($("comment"), $("cWrap"), !!d.comment_disabled);
+      lockCheck($("duet"), $("dWrap"), !!d.duet_disabled);
+      lockCheck($("stitch"), $("sWrap"), !!d.stitch_disabled);
+      validate();
+    })
+    .catch(() => {
+      $("gate").hidden = false;
+      $("gateText").textContent = "Network error. Please refresh the page.";
+    });
+
+  // Rules from TikTok's posting guidelines
+  function validate() {
+    const commercial = $("commercial").checked;
+    const yourBrand = $("yourBrand").checked;
+    const branded = $("branded").checked;
+    const privacy = $("privacy").value;
+
+    $("commercialOpts").hidden = !commercial;
+
+    // Branded content cannot be private
+    const onlyMe = $("privacy").querySelector('option[value="SELF_ONLY"]');
+    if (onlyMe) onlyMe.disabled = commercial && branded;
+    if (commercial && branded && privacy === "SELF_ONLY") $("privacy").value = "";
+
+    let hint = "";
+    if (commercial && !yourBrand && !branded) hint = "Choose at least one option to continue.";
+    else if (branded) hint = "Your video will be labeled as \"Paid partnership\".";
+    else if (yourBrand) hint = "Your video will be labeled as \"Promotional content\".";
+    $("commercialHint").textContent = hint;
+
+    let consent = 'By posting, you agree to TikTok\'s <a href="https://www.tiktok.com/legal/page/global/music-usage-confirmation/en" target="_blank" rel="noopener">Music Usage Confirmation</a>';
+    if (commercial && branded) consent += ' and <a href="https://www.tiktok.com/legal/page/global/bc-policy/en" target="_blank" rel="noopener">Branded Content Policy</a>';
+    $("consent").innerHTML = consent + ".";
+
+    let ok = !!creator && $("privacy").value !== "";
+    if (commercial && !yourBrand && !branded) ok = false;
+
+    const max = creator && creator.max_video_post_duration_sec;
+    if (max && videoSeconds && videoSeconds > max) {
+      ok = false;
+      $("privacyHint").textContent = "This video is longer than your account allows (" + max + " seconds).";
+    } else {
+      $("privacyHint").textContent = "";
+    }
+
+    $("postBtn").disabled = !ok;
+  }
+
+  ["privacy", "commercial", "yourBrand", "branded"].forEach(id => $(id).addEventListener("change", validate));
+
+  // Post
+  $("form").addEventListener("submit", e => {
+    e.preventDefault();
+    $("postBtn").disabled = true;
+    $("postBtn").textContent = "Posting…";
+    showMsg("info", "Sending your video to TikTok…");
+
+    const body = {
+      video_url: window.location.origin + VIDEO.path,
+      title: $("caption").value,
+      privacy_level: $("privacy").value,
+      disable_comment: !$("comment").checked,
+      disable_duet: !$("duet").checked,
+      disable_stitch: !$("stitch").checked,
+      brand_organic_toggle: $("commercial").checked && $("yourBrand").checked,
+      brand_content_toggle: $("commercial").checked && $("branded").checked
+    };
+
+    fetch("/api/post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    })
+      .then(r => r.json().then(d => ({ ok: r.ok, d })))
+      .then(({ ok, d }) => {
+        if (!ok) throw new Error(d.error || "Posting failed");
+        showMsg("info", "TikTok is processing your video. This can take a few minutes.");
+        checkStatus(d.publish_id, 0);
+      })
+      .catch(err => {
+        showMsg("bad", "Not posted: " + err.message);
+        $("postBtn").textContent = "Post to TikTok";
+        validate();
+      });
+  });
+
+  function checkStatus(id, tries) {
+    if (tries > 40) {
+      showMsg("info", "Still processing. Check your TikTok profile in a few minutes.");
+      $("postBtn").textContent = "Post to TikTok";
+      return;
+    }
+    setTimeout(() => {
+      fetch("/api/status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ publish_id: id })
+      })
+        .then(r => r.json())
+        .then(d => {
+          if (d.status === "PUBLISH_COMPLETE") {
+            showMsg("good", "Posted. Your video is now on your TikTok profile.");
+            $("postBtn").textContent = "Posted";
+          } else if (d.status === "FAILED") {
+            showMsg("bad", "Not posted: " + (d.fail_reason || "TikTok could not process the video."));
+            $("postBtn").textContent = "Post to TikTok";
+            validate();
+          } else {
+            checkStatus(id, tries + 1);
+          }
+        })
+        .catch(() => checkStatus(id, tries + 1));
+    }, 3000);
+  }
+</script>
+</body>
+</html>
