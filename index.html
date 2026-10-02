@@ -1,78 +1,261 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MACHHAD | مشهد</title>
-<meta name="tiktok-developers-site-verification" content="KJkrHBwNkNIInP0k6srY218zL0l8JdA2" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MACHHAD – Short motivational videos for your TikTok</title>
+<meta name="description" content="MACHHAD helps creators make short motivational videos with AI, review them, and post them to their own TikTok account.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body {
-    font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    color: #f0f0f0;
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+  :root{
+    --sky:#E8ECF8;
+    --ink:#1E2448;
+    --ink-soft:#4A5078;
+    --sun:#F2A93B;
+    --rose:#E86A6A;
+    --paper:#FFFFFF;
+    --line:#CDD3EA;
+    --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
   }
-  .container {
-    max-width: 560px;
-    text-align: center;
-    background: rgba(255,255,255,0.05);
-    padding: 48px 32px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);font-size:18px;line-height:1.6;color:var(--ink);background:var(--sky)}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{padding:22px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .brand{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.5px;text-decoration:none}
+  .brand span{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--sun);margin-left:4px}
+  .nav ul{display:flex;gap:24px;list-style:none;flex-wrap:wrap}
+  .nav ul a{text-decoration:none;font-weight:600;color:var(--ink-soft)}
+  .nav ul a:hover{color:var(--ink)}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:600;font-size:17px;
+       padding:14px 24px;border-radius:999px;text-decoration:none;border:2px solid var(--ink);cursor:pointer}
+  .btn-main{background:var(--ink);color:var(--paper)}
+  .btn-main:hover{background:#2C3463}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--paper)}
+  .tt{width:18px;height:18px}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;padding:48px 0 88px}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,68px);line-height:1.02;letter-spacing:-1.5px;margin-bottom:22px}
+  .lead{font-size:20px;color:var(--ink-soft);max-width:34ch;margin-bottom:32px}
+  .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .small{font-size:15px;color:var(--ink-soft);margin-top:18px}
+
+  /* Video frames: the memorable element */
+  .reel{position:relative;height:520px}
+  .frame{position:absolute;width:230px;aspect-ratio:9/16;border-radius:26px;border:6px solid var(--ink);
+         overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff;
+         box-shadow:0 30px 60px -30px rgba(30,36,72,.55)}
+  .frame p{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.15;position:relative}
+  .frame small{display:inline-block;margin-top:12px;font-size:12px;background:rgba(255,255,255,.22);
+               padding:3px 10px;border-radius:999px;position:relative}
+  .f1{left:0;top:40px;transform:rotate(-6deg);background:linear-gradient(180deg,#2B3170 0%,#E86A6A 70%,#F2A93B 100%)}
+  .f2{left:50%;top:0;transform:translateX(-50%);z-index:2;background:linear-gradient(180deg,#1E2448 0%,#4B4FA0 55%,#F2A93B 100%)}
+  .f3{right:0;top:60px;transform:rotate(6deg);background:linear-gradient(180deg,#3A2A5E 0%,#8E5BA8 55%,#E86A6A 100%)}
+  .sun{position:absolute;width:90px;height:90px;border-radius:50%;background:var(--sun);left:50%;top:38%;
+       transform:translateX(-50%);opacity:.9;filter:blur(1px)}
+  @media (prefers-reduced-motion:no-preference){
+    .f1,.f3{animation:settle .9s ease-out both}
+    @keyframes settle{from{opacity:0;transform:rotate(0) translateY(30px)}}
   }
-  h1 {
-    font-size: 2.2em;
-    margin-bottom: 8px;
-    background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcf7f);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+  /* Sections */
+  section{padding:80px 0;border-top:1px solid var(--line)}
+  h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4vw,44px);letter-spacing:-1px;line-height:1.1;margin-bottom:16px}
+  .intro{color:var(--ink-soft);max-width:60ch;margin-bottom:44px}
+
+  .steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
+  .steps li{counter-increment:s;padding-top:18px;border-top:4px solid var(--ink)}
+  .steps li::before{content:counter(s);font-family:var(--display);font-weight:800;font-size:44px;color:var(--sun);display:block;line-height:1;margin-bottom:10px}
+  .steps h3{font-family:var(--display);font-size:21px;margin-bottom:6px}
+  .steps p{color:var(--ink-soft);font-size:17px}
+
+  .control{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .control dl{display:grid;gap:22px}
+  .control dt{font-family:var(--display);font-weight:700;font-size:20px}
+  .control dd{color:var(--ink-soft)}
+  .panel{background:var(--paper);border-radius:22px;padding:28px;border:1px solid var(--line)}
+  .panel h3{font-family:var(--display);font-size:20px;margin-bottom:18px}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+  .row:last-of-type{border-bottom:0}
+  .row b{font-weight:600}
+  .pill{background:var(--sky);padding:2px 12px;border-radius:999px;font-size:14px}
+  .panel .btn{margin-top:18px;width:100%;justify-content:center}
+
+  .faq details{border-bottom:1px solid var(--line);padding:18px 0}
+  .faq summary{font-family:var(--display);font-weight:700;font-size:20px;cursor:pointer;list-style:none}
+  .faq summary::after{content:"+";float:right;color:var(--sun);font-size:26px;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--ink-soft);margin-top:10px;max-width:70ch}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .about p{color:var(--ink-soft);margin-bottom:14px}
+
+  footer{background:var(--ink);color:#C9CDE6;padding:48px 0 36px;margin-top:40px}
+  .foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+  footer .brand{color:#fff}
+  footer ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}
+  footer a{text-decoration:none}
+  footer a:hover{color:#fff;text-decoration:underline}
+  .copy{margin-top:28px;font-size:15px}
+
+  @media (max-width:900px){
+    .hero,.control,.about{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .reel{height:460px;max-width:420px;margin:0 auto;width:100%}
+    .frame{width:190px}
   }
-  p.tagline {
-    color: #b8b8b8;
-    font-size: 1.1em;
-    margin-bottom: 32px;
-  }
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  a.link-btn {
-    display: block;
-    padding: 14px 24px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
-    color: #f0f0f0;
-    text-decoration: none;
-    font-size: 1em;
-    transition: background 0.2s;
-  }
-  a.link-btn:hover {
-    background: rgba(255,255,255,0.15);
-  }
-  footer {
-    margin-top: 32px;
-    font-size: 0.85em;
-    color: #888;
+  @media (max-width:560px){
+    .steps{grid-template-columns:1fr}
+    .nav ul{gap:16px;font-size:16px}
+    .frame{width:150px;padding:14px}
+    .frame p{font-size:16px}
+    .reel{height:380px}
   }
 </style>
 </head>
 <body>
-  <div class="container">
-    <h1>lMACHHAD | مشهد</h1>
-    <p class="tagline">عالم من الاكتشافات 🌍 حيوانات • معلومات • ثقافة • قصص وفيديوهات ممتعة بالذكاء الاصطناعي</p>
-    <div class="links">
-      <a class="link-btn" href="privacy.html">سياسة الخصوصية</a>
-      <a class="link-btn" href="terms.html">شروط الخدمة</a>
-    </div>
-    <footer>© 2026 MACHHAD. جميع الحقوق محفوظة.</footer>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">MACHHAD<span aria-hidden="true"></span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#control">Your control</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
   </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Short motivational videos, made with AI, posted by you.</h1>
+      <p class="lead">MACHHAD writes and builds vertical videos with uplifting messages. You watch each one, edit the caption, choose who can see it, and post it to your own TikTok account.</p>
+      <div class="actions">
+        <a class="btn btn-main login-tiktok" href="#">
+          <svg class="tt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>
+          Continue with TikTok
+        </a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <p class="small">Free to use. Every video is labeled as AI-generated.</p>
+    </div>
+
+    <div class="reel" aria-label="Example MACHHAD videos">
+      <div class="frame f1"><p>Small steps every day still count.</p><small>AI-generated</small></div>
+      <div class="frame f2"><div class="sun" aria-hidden="true"></div><p>Start before you feel ready.</p><small>AI-generated</small></div>
+      <div class="frame f3"><p>Your future thanks you for today.</p><small>AI-generated</small></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="intro">Four steps from idea to post. Nothing goes to your TikTok until you press Post.</p>
+      <ol class="steps">
+        <li><h3>Connect TikTok</h3><p>Sign in with your TikTok account and approve access. We only read your basic profile (name and avatar).</p></li>
+        <li><h3>Generate a video</h3><p>Pick a theme like discipline, patience or new beginnings. MACHHAD creates a short vertical video with text, music and visuals.</p></li>
+        <li><h3>Review and edit</h3><p>Watch the preview, change the caption, and choose the privacy setting and whether comments, duets or stitches are allowed.</p></li>
+        <li><h3>Post</h3><p>Press Post to publish the video to your own TikTok profile. You can delete it from TikTok at any time.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="control">
+    <div class="wrap control">
+      <div>
+        <h2>You decide what gets posted</h2>
+        <dl>
+          <div><dt>Preview first</dt><dd>You see the full video before anything is sent to TikTok.</dd></div>
+          <div><dt>Your caption</dt><dd>Edit or rewrite the suggested caption and hashtags.</dd></div>
+          <div><dt>Your audience</dt><dd>Choose public, friends, or only you. There is no default choice made for you.</dd></div>
+          <div><dt>Clear AI label</dt><dd>Videos are marked as AI-generated content, following TikTok's rules.</dd></div>
+          <div><dt>Disconnect anytime</dt><dd>Remove MACHHAD's access from your TikTok settings whenever you want.</dd></div>
+        </dl>
+      </div>
+      <div class="panel" aria-label="Example of the posting screen">
+        <h3>Ready to post</h3>
+        <div class="row"><b>Posting to</b><span>@your_account</span></div>
+        <div class="row"><b>Caption</b><span>Start before you feel ready ✨</span></div>
+        <div class="row"><b>Who can view</b><span class="pill">Choose…</span></div>
+        <div class="row"><b>Allow comments</b><span class="pill">Off</span></div>
+        <div class="row"><b>Allow duet / stitch</b><span class="pill">Off</span></div>
+        <div class="row"><b>Content label</b><span>AI-generated</span></div>
+        <span class="btn btn-main" role="img" aria-label="Post button example">Post to TikTok</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <details><summary>Does MACHHAD post without asking me?</summary><p>No. A video is only published after you review it and press Post. You can also save it to your TikTok inbox as a draft and finish it in the TikTok app.</p></details>
+      <details><summary>What do you access on my TikTok account?</summary><p>Your basic profile (display name and avatar) to show which account you are posting to, and permission to upload or post the videos you approve. We never read your messages, followers or other videos.</p></details>
+      <details><summary>Who owns the videos?</summary><p>You do. Videos are created for you and published on your own account.</p></details>
+      <details><summary>How do I delete my data?</summary><p>Disconnect MACHHAD in TikTok's settings, then email us and we delete your data. Details are in our <a href="/privacy.html">Privacy Policy</a>.</p></details>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div>
+        <h2>About MACHHAD</h2>
+        <p>"Machhad" means "scene" in Arabic. Each video is one short scene with one clear message, made to give people a small push forward in their day.</p>
+        <p>MACHHAD is built by an independent developer based in Morocco.</p>
+      </div>
+      <div id="contact">
+        <h2>Contact</h2>
+        <p>Questions, feedback or data requests:</p>
+        <p><a href="mailto:zineabderrazak85@gmail.com">zineabderrazak85@gmail.com</a></p>
+        <p>We reply within 3 working days.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="/">MACHHAD</a>
+      <ul>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <p class="copy">© 2026 MACHHAD. Not affiliated with TikTok.</p>
+  </div>
+</footer>
+
+<script>
+  // ===== Replace YOUR_CLIENT_KEY with the Client key from TikTok for Developers =====
+  const CLIENT_KEY = "YOUR_CLIENT_KEY";
+  const REDIRECT_URI = "https://machhad-web.vercel.app/callback";
+  const SCOPES = "user.info.basic,video.publish,video.upload";
+
+  const state = Math.random().toString(36).slice(2);
+  const url = "https://www.tiktok.com/v2/auth/authorize/?client_key=" + encodeURIComponent(CLIENT_KEY) +
+    "&scope=" + encodeURIComponent(SCOPES) +
+    "&response_type=code" +
+    "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+    "&state=" + state;
+  document.querySelectorAll(".login-tiktok").forEach(a => a.href = url);
+</script>
 </body>
 </html>
