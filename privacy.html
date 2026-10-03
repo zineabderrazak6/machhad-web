@@ -1,88 +1,103 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سياسة الخصوصية | lMACHHAD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy – MACHHAD</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  body {
-    font-family: 'Tahoma', 'Segoe UI', Arial, sans-serif;
-    background: #f7f7fa;
-    color: #222;
-    margin: 0;
-    padding: 40px 20px;
-    line-height: 1.8;
-  }
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  }
-  h1 {
-    color: #1a1a2e;
-    border-bottom: 3px solid #6bcf7f;
-    padding-bottom: 12px;
-  }
-  h2 {
-    color: #16213e;
-    margin-top: 32px;
-  }
-  p, li { color: #444; }
-  .updated {
-    color: #888;
-    font-size: 0.9em;
-    margin-bottom: 24px;
-  }
-  a { color: #2e7d32; }
-  footer {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 0.85em;
-    color: #999;
-  }
+  :root{--sky:#E8ECF8;--ink:#1E2448;--ink-soft:#4A5078;--sun:#F2A93B;--paper:#fff;--line:#CDD3EA}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Source Sans 3",system-ui,sans-serif;background:var(--sky);color:var(--ink);font-size:18px;line-height:1.65}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  header{padding:22px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:24px;text-decoration:none;color:var(--ink)}
+  header nav a{margin-left:20px;font-weight:600;color:var(--ink-soft);text-decoration:none}
+  header nav a:hover{color:var(--ink)}
+  article{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:44px;margin:12px 0 56px}
+  h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:clamp(32px,5vw,46px);line-height:1.1;margin-bottom:8px}
+  .date{color:var(--ink-soft);margin-bottom:28px}
+  h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:23px;margin:32px 0 10px}
+  p,li{color:#2F3560;max-width:68ch}
+  p+p{margin-top:12px}
+  ul{margin:10px 0 0 22px}
+  li{margin-bottom:6px}
+  a{color:var(--ink)}
+  :focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+  footer{background:var(--ink);color:#C9CDE6;padding:36px 0}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+  footer a{color:#C9CDE6;text-decoration:none;margin-left:18px}
+  footer a:hover{color:#fff;text-decoration:underline}
+  @media (max-width:600px){article{padding:28px 22px}header nav a{margin:0 16px 0 0}}
 </style>
 </head>
 <body>
-  <div class="container">
-    <h1>سياسة الخصوصية</h1>
-    <p class="updated">آخر تحديث: 13 سبتمبر 2026</p>
+<div class="wrap">
+  <header>
+    <a class="brand" href="/">MACHHAD</a>
+    <nav><a href="/">Home</a><a href="/terms.html">Terms</a><a href="/#contact">Contact</a></nav>
+  </header>
 
-    <p>نحن في تطبيق <strong>MACHHAD (مشهد)</strong> نحترم خصوصيتك ونلتزم بحماية أي معلومات تتعلق بك. توضح هذه السياسة كيفية جمعنا واستخدامنا وحمايتنا للبيانات عند استخدامك لخدماتنا، بما في ذلك عند ربط حسابك على منصات التواصل الاجتماعي مثل TikTok.</p>
+  <article>
+    <h1>Privacy Policy</h1>
+    <p class="date">Last updated: October 2, 2026</p>
 
-    <h2>1. المعلومات التي نجمعها</h2>
+    <p>This policy explains what information MACHHAD ("we", "us") uses when you sign in with TikTok and post videos through our website at machhad-web.vercel.app, and how we protect it.</p>
+
+    <h2>1. Information we receive from TikTok</h2>
+    <p>When you choose "Continue with TikTok" and approve access, TikTok shares with us only what you allow:</p>
     <ul>
-      <li>معلومات الحساب الأساسية التي توافق على مشاركتها عند تسجيل الدخول عبر منصات خارجية (مثل الاسم واسم المستخدم العام).</li>
-      <li>البيانات اللازمة لنشر المحتوى نيابة عنك، بعد موافقتك الصريحة، مثل رفع الفيديوهات ونشرها على حسابك.</li>
-      <li>بيانات تقنية أساسية (نوع الجهاز، معرف الجلسة) لأغراض تشغيل الخدمة بشكل سليم.</li>
+      <li><strong>Basic profile (user.info.basic):</strong> your display name, username, avatar and a TikTok user ID. We show your name and avatar on the posting page so you know which account you are posting to.</li>
+      <li><strong>Posting permissions (video.publish, video.upload):</strong> allow us to send a video you have reviewed to your own TikTok account, only after you press "Post to TikTok".</li>
+      <li><strong>Posting settings from TikTok:</strong> the privacy options, comment/duet/stitch settings and maximum video length available for your account, so the posting page shows the correct choices.</li>
+    </ul>
+    <p>We do not access your messages, followers, contacts, other videos, or your TikTok password.</p>
+
+    <h2>2. How we use this information</h2>
+    <ul>
+      <li>To sign you in and show which account you are posting to.</li>
+      <li>To post the video you approved, with the caption, privacy level and settings you chose.</li>
+      <li>To show you whether the post succeeded.</li>
+    </ul>
+    <p>We do not sell your information, use it for advertising, or share it with anyone except as described in section 4.</p>
+
+    <h2>3. Storage and security</h2>
+    <p>The access token TikTok gives us is kept in a secure, HTTP-only cookie in your browser. Page scripts cannot read it, and it expires automatically (usually within 24 hours). We do not store your TikTok profile or token in a database. All traffic uses HTTPS. Our app secret is kept on the server and is never sent to your browser.</p>
+
+    <h2>4. Service providers</h2>
+    <ul>
+      <li><strong>TikTok</strong>, to sign you in and publish your videos, under <a href="https://www.tiktok.com/legal/page/global/privacy-policy/en" target="_blank" rel="noopener">TikTok's Privacy Policy</a>.</li>
+      <li><strong>Vercel</strong>, which hosts our website and may keep standard technical logs (such as IP address and request time) for security and reliability.</li>
+      <li><strong>AI tools</strong> used to create the motivational videos. No personal information from your TikTok account is sent to them.</li>
     </ul>
 
-    <h2>2. كيفية استخدام المعلومات</h2>
+    <h2>5. AI-generated content</h2>
+    <p>Videos made with MACHHAD are created with AI. They are labeled as AI-generated when posted to TikTok.</p>
+
+    <h2>6. Your choices and data deletion</h2>
     <ul>
-      <li>تشغيل وتحسين خدمة نشر المحتوى التلقائي التي وافقت عليها.</li>
-      <li>التواصل معك بخصوص حالة حسابك أو أي مشكلة تقنية.</li>
-      <li>لا نبيع أو نؤجر بياناتك الشخصية لأي طرف ثالث لأغراض تسويقية.</li>
+      <li>You decide if and when a video is posted, and who can see it.</li>
+      <li>You can remove MACHHAD's access at any time in the TikTok app: Settings and privacy, Security and permissions, App permissions.</li>
+      <li>You can delete posted videos directly in TikTok.</li>
+      <li>To ask what data we hold or to request deletion, email us. We reply within 3 working days.</li>
     </ul>
 
-    <h2>3. مشاركة البيانات مع أطراف ثالثة</h2>
-    <p>نستخدم واجهات برمجية (APIs) رسمية تابعة لمنصات مثل TikTok حصراً لغرض نشر المحتوى الذي توافق عليه صراحة. لا تتم مشاركة بياناتك مع أي جهة أخرى خارج هذا الغرض.</p>
+    <h2>7. Children</h2>
+    <p>MACHHAD is not intended for people under 13, or under the minimum age to use TikTok in their country.</p>
 
-    <h2>4. أمان البيانات</h2>
-    <p>نتخذ إجراءات معقولة لحماية بياناتك من الوصول غير المصرح به، بما في ذلك تشفير الاتصال وتخزين رموز الدخول (tokens) بشكل آمن.</p>
+    <h2>8. Changes to this policy</h2>
+    <p>If we change this policy, we will update the date at the top of this page.</p>
 
-    <h2>5. حقوقك</h2>
-    <p>يمكنك في أي وقت طلب حذف بياناتك أو إلغاء ربط حسابك عبر التواصل معنا على البريد الإلكتروني أدناه، وسيتم حذف بياناتك خلال مدة معقولة.</p>
+    <h2>9. Contact</h2>
+    <p>MACHHAD is run by an independent developer based in Morocco. For any question about privacy: <a href="mailto:zineabderrazak85@gmail.com">zineabderrazak85@gmail.com</a></p>
+  </article>
+</div>
 
-    <h2>6. التواصل معنا</h2>
-    <p>لأي استفسار بخصوص هذه السياسة، يمكنك التواصل معنا عبر البريد الإلكتروني: <a href="mailto:zineabderrazak85@gmail.com">zineabderrazak85@gmail.com</a></p>
-
-    <h2>7. تعديلات على السياسة</h2>
-    <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. سيتم نشر أي تعديلات على هذه الصفحة مع تاريخ التحديث.</p>
-
-    <p><a href="index.html">← العودة للصفحة الرئيسية</a></p>
-    <footer>© 2026 lMACHHAD. جميع الحقوق محفوظة.</footer>
+<footer>
+  <div class="wrap">
+    <span>© 2026 MACHHAD. Not affiliated with TikTok.</span>
+    <span><a href="/terms.html">Terms of Service</a><a href="/privacy.html">Privacy Policy</a></span>
   </div>
+</footer>
 </body>
 </html>
