@@ -28,6 +28,7 @@ module.exports = async (req, res) => {
       body: params,
     });
     const data = await r.json();
+        console.log("REFRESH_TOKEN:", data.refresh_token);
 
     if (!data.access_token) {
       return res.status(400).json({
