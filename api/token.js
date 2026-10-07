@@ -29,7 +29,6 @@ module.exports = async (req, res) => {
     });
     const data = await r.json();
         console.log("REFRESH_TOKEN:", data.refresh_token);
-
     if (!data.access_token) {
       return res.status(400).json({
         error: data.error_description || data.error || "Could not connect to TikTok",
